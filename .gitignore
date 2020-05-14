@@ -1,0 +1,9 @@
+
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/other.xml
+.idea/Smart-Fire-Escape-Monitor.iml
+.idea/vcs.xml
+ssd_inception_v2_coco_2017_11_17.tar.gz
+ssd_inception_v2_coco_2017_11_17/frozen_inference_graph.pb
