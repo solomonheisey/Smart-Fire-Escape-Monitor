@@ -92,6 +92,14 @@ with detection_graph.as_default():
             (boxes, scores, classes, num_detections) = sess.run(
                 [boxes, scores, classes, num_detections],
                 feed_dict={image_tensor: image_np_expanded})
+
+            person = [category_index.get(value).get('name') for i, value in enumerate(classes[0]) if scores[0, i] > 0.5]
+
+            if 'person' in person:
+                print("Intruder!")
+            else:
+                print("You are safe!")
+
             # Visualization of the results of a detection.
             vis_util.visualize_boxes_and_labels_on_image_array(
                 image_np,
