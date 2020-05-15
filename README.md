@@ -2,7 +2,9 @@
 This project integrates TensorFlow Object Detection to analyze the security threat of objects to my apartment and notify me accordingly in real-time.
 
 <p align="center">
-  <img src="images/rover.png" width="20%" height="20%"> 
+  <img src="images/setup.jpg" width="20%" height="20%">
+  <img src="images/camera.jpg" width="20%" height="20%"> 
+  <img src="images/whatsapp.png" width="20%" height="20%"> 
 </p>
 
 ## Introduction
