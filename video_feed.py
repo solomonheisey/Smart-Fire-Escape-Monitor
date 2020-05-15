@@ -77,7 +77,9 @@ def load_image_into_numpy_array(image):
 # Detection
 with detection_graph.as_default():
     with tf.compat.v1.Session(graph=detection_graph) as sess:
-        while True:
+        person_count = 0
+        cat_count = 0
+        while cap.isOpened():
 
             time_elapsed = time.time() - prev
             # Read frame from camera
@@ -108,11 +110,17 @@ with detection_graph.as_default():
                           scores[0, i] > 0.5]
 
                 if 'person' in person:
-                    print("Intruder!")
+                    person_count += 1
+                    if person_count == 1:
+                        print("ALERT! Intruder alert")
+                    if person_count >= 20:
+                        person_count = 0
                 elif 'cat' in person:
-                    print("Cat is outside!")
-                else:
-                    print("You are safe!")
+                    cat_count += 1
+                    if cat_count == 1:
+                        print("Cat is outside!")
+                    if cat_count >= 200:
+                        cat_count = 0
 
                 # Visualization of the results of a detection.
                 vis_util.visualize_boxes_and_labels_on_image_array(
