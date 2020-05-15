@@ -14,6 +14,8 @@ Using OpenCV the video input is piped into my python project. The video is then 
 ## Getting Started
 ``` 
 $ conda env create -f environmnet.yml
+$ conda activate environment
+$ python video_feed.py
 ```
 
 ## Author
