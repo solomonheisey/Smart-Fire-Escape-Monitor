@@ -14,7 +14,10 @@ The motivation of this project was to midigate my safety concerns in my apartmen
 ## Getting Started
 ``` 
 $ conda env create -f environmnet.yml
-``
+```
+
+## Author
+* Solomon Heisey
 
 
 
