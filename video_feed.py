@@ -1,20 +1,22 @@
+import os
+import tarfile
 import time
 
-import numpy as np
-import os
-import six.moves.urllib as urllib
-import sys
-import tarfile
-import tensorflow as tf
-import zipfile
 import cv2
-
-from collections import defaultdict
-from io import StringIO
-from matplotlib import pyplot as plt
-from PIL import Image
+import numpy as np
+import six.moves.urllib as urllib
+import tensorflow as tf
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
+from twilio.rest import Client
+
+# Replace with TWILIO_ACCOUNT_SID & TWILIO_AUTH_TOKEN
+client = Client("XXXXXXXXXXXXXX", "XXXXXXXXXXXXXXXXXXXX")
+
+from_whatsapp_number = 'whatsapp:+14155238886'
+
+# Replace with your whatsapp number
+to_whatsapp_number = 'whatsapp:+XXXXXXXXXXXXXXX'
 
 # Define the video stream
 cap = cv2.VideoCapture(0)
@@ -112,13 +114,23 @@ with detection_graph.as_default():
                 if 'person' in person:
                     person_count += 1
                     if person_count == 1:
-                        print("ALERT! Intruder alert")
+
+                        # Sends whatsapp message with link to live nest cam feed
+                        client.messages.create(body='Alert! Someone is on the fire escape \U0001F575'
+                                                    'VIEW ACTIVITY: https://video.nest.com/live/XXXXXXXXX',
+                                               from_=from_whatsapp_number,
+                                               to=to_whatsapp_number)
                     if person_count >= 20:
                         person_count = 0
                 elif 'cat' in person:
                     cat_count += 1
                     if cat_count == 1:
-                        print("Cat is outside!")
+
+                        #Sends whatsapp message link to live nest cam feed
+                        client.messages.create(body="Cat is outside \1F63A"
+                                               'VIEW ACTIVITY: https://video.nest.com/live/XXXXXXXXXXX',
+                                               from_=from_whatsapp_number,
+                                               to=to_whatsapp_number)
                     if cat_count >= 200:
                         cat_count = 0
 
